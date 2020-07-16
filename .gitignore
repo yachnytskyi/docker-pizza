@@ -25,3 +25,18 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/.generators
+/app/controllers/concerns/.keep
+/test/fixtures/.keep
+/test/fixtures/files/.keep
+/log/.keep
+/test/controllers/.keep
+/lib/tasks/.keep
+/storage/.keep
+/test/models/.keep
+/test/integration/.keep
+/app/models/concerns/.keep
+/tmp/pids/.keep
+/tmp/.keep
+/test/mailers/.keep
+/vendor/.keep
