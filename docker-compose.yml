@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  pizza_db:
+    image: postgres:10.7
+    container_name: pizza-postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - $HOME/Data/postgres:/var/lib/postgresql/data
+      
+  pizza_app:
+    container_name: pizza-app
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - pizza_db
