@@ -17,7 +17,6 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def show
-    # json_response(@category)
     render json: @category, include: [:news]
   end
 
