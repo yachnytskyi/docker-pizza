@@ -1,32 +1,32 @@
 class Api::V1::CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :update, :destroy]
-  include Response
 
   # GET /categories
   def index
     @categories = Category.all
-    json_response(@categories)
+    render json: @categories, include: [:news]
   end
 
   def create
     @category = Category.create!(category_params)
     if @category.save
-      json_response(@category, :created)
+      render json: @category, status: :created
     else
       render json: @category.errors, status: :unprocessable_entity
     end
   end
 
   def show
-    json_response(@category)
+    # json_response(@category)
+    render json: @category, include: [:news]
   end
 
   def update
-    json_response(@category, :ok) if @category.update(category_params)
+    render json: @category, status: :ok if @category.update(category_params)
   end
 
   def destroy
-    json_response(@category, :no_content) if @category.delete
+    render json: @category, status: :no_content if @category.delete
   end
 
   private
