@@ -17,7 +17,7 @@ class Api::V1::NewsController < ApplicationController
   end
 
   def show
-    render json: @news, status: :created
+    render json: @news
   end
 
   def update
